@@ -129,7 +129,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES
-  dd_router
+  router
 
   CATKIN_DEPENDS
   dynamic_reconfigure
@@ -171,6 +171,10 @@ add_library(router src/router.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(router ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+add_dependencies(router ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+${PROJECT_NAME}_generate_messages_cpp
+${PROJECT_NAME}_gencfg)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
